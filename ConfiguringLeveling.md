@@ -66,3 +66,60 @@ thing to understand is that in this case (and indeed this is the case
 for many printers) the minimum X and Y positions are _negative_,
 because they are relative to the 0,0 position which is defined as
 being the front left corner of the bed.
+
+### Determining machine limits on a printer that homes to Xmin/Ymin
+
+To use the following procedure you need:
+
+- An LCD display on the printer that can be used to move the nozzle in a
+controlled fashion.
+- A connection to a terminal through software such as PronterFace,
+Repetier Host or OctoPrint.
+
+#### Determining `X_MIN_POS` and `Y_MIN_POS`
+
+1. Build Marlin with `X_MIN_POS` and `Y_MIN_POS` both set to 0, and
+`X_BED_SIZE`/`Y_BED_SIZE` set correctly. Flash this new Marlin to your
+printer and reboot.
+2. Connect your terminal and home just X and Y with `G28 X Y`. _Do not use `G28` on its own - we do not want to home Z._
+3. The LCD display should show `X=0`,`Y=0` and the nozzle should be as far left and to the front of the bed as it can move, and touching the end stop.
+4. Check out where the nozzle is with respect to the front left corner of
+the bed. 
+5. If the nozzle is exactly over the front left corner of the bed,
+congratulations! Your `X_MIN_POS` and `Y_MIN_POS` values are correct, and
+you may move to determining the maximum positions.
+6. If the nozzle is to the right of the left edge of the bed, or behind
+the front edge of the bed, or both, jump to the section "The Xmin/Ymin
+position is over the bed".
+7. Using the LCD, move the nozzle carefully until it's right over the
+front left corner of the bed. Read the X and Y values on the LCD. Take those
+values, make them negative, and use them as new values for `X_MIN_POS` and
+`Y_MIN_POS`. For example, if when the nozzle is over the front left corner of
+the bed you read `X=20` and `Y=21` on the LCD, then use
+```
+#define X_MIN_POS -20
+#define Y_MIN_POS -21
+```
+8. Build a new version of Marlin with the new `X_MIN_POS` and `Y_MIN_POS`
+settings and upload to your printer.
+9. Reboot, do `G28 X Y` followed by `G0 X0 Y0`. The nozzle should end up
+right over the front left corner of the bed.
+10. Go to section Determining `X_MAX_POS` and `Y_MAX_POS`.
+
+#### The Xmin/Ymin position is over the bed.
+
+If either the X minimum position or the Y minimum position is not on the edge
+or outside the bed, it means the nozzle cannot reach the whole bed. The
+safest solution in this case is to redefine the size of the bed to only
+include the area the nozzle can reach.
+
+#### Determining `X_MAX_POS` and `Y_MAX_POS`
+
+Determining the maximum positions is a simpler proposition once you have
+determined the minimum positions.
+
+1. Home X and Y with `G28 X Y`.
+2. Disable software end stops with `M211 S0`.
+2. With your LCD, _carefully_ move the nozzle to the right back corner of the
+bed. Watch carefully for any obstructions to motion (on some printers the
+nozzle is unable to reach the back corner of the bed).
