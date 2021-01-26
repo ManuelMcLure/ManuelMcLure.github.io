@@ -1,7 +1,7 @@
 # Configuring Marlin for Unified Bed Leveling
-{:no_toc}
+{:.no_toc}
 ## (or Limits and Margins and Insets, Oh My!)
-{:no_toc}
+{:.no_toc}
 
 * TOC
 {:toc}
