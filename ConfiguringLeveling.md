@@ -1,6 +1,8 @@
 # Configuring Marlin for Unified Bed Leveling
 ## (or Limits and Margins and Insets, Oh My!)
 
+{:toc}
+
 Many of the common questions seen on the
 [Marlin Discord](https://discord.gg/n5NJ59y) involve setting up the
 firmware for for UBL (Unified Bed Leveling). Users find that Marlin
