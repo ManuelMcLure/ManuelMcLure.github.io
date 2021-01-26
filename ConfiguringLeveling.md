@@ -1,4 +1,5 @@
 # Configuring Marlin for Unified Bed Leveling
+{:no_toc}
 ## (or Limits and Margins and Insets, Oh My!)
 {:no_toc}
 
@@ -24,7 +25,7 @@ printers (motion systems such as CoreXY are included in the definition of
 "cartesian"). It does not include information on setting up UBL for deltas
 or SCARA printers.
 
-### The world of UBL - Machine limits and bed position
+### H3 The world of UBL - Machine limits and bed position
 
 The most important part of the configuration is ensuring that Marlin has
 a proper understanding of where the nozzle can safely move and where the
@@ -71,7 +72,7 @@ for many printers) the minimum X and Y positions are _negative_,
 because they are relative to the 0,0 position which is defined as
 being the front left corner of the bed.
 
-### Determining machine limits on a printer that homes to Xmin/Ymin
+### H3 Determining machine limits on a printer that homes to Xmin/Ymin
 
 To use the following procedure you need:
 
@@ -110,14 +111,14 @@ settings and upload to your printer.
 right over the front left corner of the bed.
 10. Go to section Determining `X_MAX_POS` and `Y_MAX_POS`.
 
-#### The Xmin/Ymin position is over the bed.
+#### H5 The Xmin/Ymin position is over the bed.
 
 If either the X minimum position or the Y minimum position is not on the edge
 or outside the bed, it means the nozzle cannot reach the whole bed. The
 safest solution in this case is to redefine the size of the bed to only
 include the area the nozzle can reach.
 
-#### Determining `X_MAX_POS` and `Y_MAX_POS`
+#### H5 Determining `X_MAX_POS` and `Y_MAX_POS`
 
 Determining the maximum positions is a simpler proposition once you have
 determined the minimum positions.
