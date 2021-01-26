@@ -2,7 +2,8 @@
 ## (or Limits and Margins and Insets, Oh My!)
 {:no_toc}
 
-* {:toc}
+*
+{:toc}
 
 Many of the common questions seen on the
 [Marlin Discord](https://discord.gg/n5NJ59y) involve setting up the
