@@ -84,7 +84,8 @@ Repetier Host or OctoPrint.
 `X_BED_SIZE`/`Y_BED_SIZE` set correctly. Flash this new Marlin to your
 printer and reboot.
 2. Connect your terminal and home just X and Y with `G28 X Y`. _Do not use `G28` on its own - we do not want to home Z._
-3. The LCD display should show `X=0`,`Y=0` and the nozzle should be as far left and to the front of the bed as it can move, and touching the end stop.  4. Check out where the nozzle is with respect to the front left corner of
+3. The LCD display should show `X=0`,`Y=0` and the nozzle should be as far left and to the front of the bed as it can move, and touching the end stop.
+4. Check out where the nozzle is with respect to the front left corner of
 the bed. 
 5. If the nozzle is exactly over the front left corner of the bed,
 congratulations! Your `X_MIN_POS` and `Y_MIN_POS` values are correct, and
@@ -113,6 +114,22 @@ If either the X minimum position or the Y minimum position is not on the edge
 or outside the bed, it means the nozzle cannot reach the whole bed. The
 safest solution in this case is to redefine the size of the bed to only
 include the area the nozzle can reach.
+
+For example, let's assume that the physical X dimension of the bed is 235mm,
+but when the printer homes and the nozzle is at the X minimum end stop it is
+over the bed, 8mm in from the edge. In this case, you would configure
+`X_MIN_POS` as 0, and reduce `X_BED_SIZE` by 8:
+```
+#define X_BED_SIZE 227
+...
+#define X_MIN_POS 0
+```
+
+The same applies to the Y axis.
+
+Note that if the nozzle can also not reach the right and/or back edge of the bed,
+it may be necessary to reduce the bed size even further - see the next section
+about setting the maximum X and Y positions.
 
 ### Determining `X_MAX_POS` and `Y_MAX_POS`
 
