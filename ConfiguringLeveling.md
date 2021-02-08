@@ -91,8 +91,8 @@ the bed.
 congratulations! Your `X_MIN_POS` and `Y_MIN_POS` values are correct, and
 you may move to determining the maximum positions.
 6. If the nozzle is to the right of the left edge of the bed, or behind
-the front edge of the bed, or both, jump to the section "The Xmin/Ymin
-position is over the bed".
+the front edge of the bed, or both, jump to the section "**The Xmin/Ymin
+position is over the bed**".
 7. Using the LCD, move the nozzle carefully until it's right over the
 front left corner of the bed. Read the X and Y values on the LCD. Take those
 values, make them negative, and use them as new values for `X_MIN_POS` and
