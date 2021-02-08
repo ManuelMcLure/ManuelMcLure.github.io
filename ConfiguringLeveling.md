@@ -106,7 +106,7 @@ define Y_MIN_POS -21
 settings and upload to your printer.
 9. Reboot, do `G28 X Y` followed by `G0 X0 Y0`. The nozzle should end up
 right over the front left corner of the bed.
-10. Go to section **Determining `X_MAX_POS` and `Y_MAX_POS`**.
+10. Go to section "**Determining `X_MAX_POS` and `Y_MAX_POS`**".
 
 ### The Xmin/Ymin position is over the bed.
 
