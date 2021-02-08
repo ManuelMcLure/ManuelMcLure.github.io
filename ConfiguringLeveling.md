@@ -133,8 +133,8 @@ about setting the maximum X and Y positions.
 
 ### Determining `X_MAX_POS` and `Y_MAX_POS`
 
-Determining the maximum positions is a simpler proposition once you have
-determined the minimum positions.
+Once you have determined and configured the minimum positions following the method
+above, it is a simpler proposition to determine and configure the maximum positions.
 
 1. Home X and Y with `G28 X Y`.
 2. Disable software end stops with `M211 S0`.
@@ -142,5 +142,9 @@ determined the minimum positions.
 bed. Watch carefully for any obstructions to motion (on some printers the
 nozzle is unable to reach the back corner of the bed).
 4. If possible, _carefully_ move the nozzle to the right and behind the bed as far as it can safely go.
-5. The position shown on the display will be your `X_MAX_POS` and `Y_MAX_POS` values. It is a good idea to lower these by a few millimeters for safety.
-6. If either `X_MAX_POS` or `Y_MAX_POS` is larger than `X_BED_SIZE` or `Y_BED_SIZE` you should reduce the bed size accordingly.
+5. The position shown on the display will be your `X_MAX_POS` and `Y_MAX_POS` values.
+It is a good idea to lower these by a few millimeters for safety.
+6. If either `X_BED_SIZE` is more than the resulting `X_MAX_POS` (or `Y_BED_SIZE` is
+more than `Y_MAX_POS`), set `X_BED_SIZE` to the same value as `X_MAX_POS` (or
+`Y_BED_SIZE` to `Y_MAX_POS`).
+
