@@ -22,16 +22,27 @@ printers (motion systems such as CoreXY are included in the definition of
 "cartesian"). It does not include information on setting up UBL for deltas
 or SCARA printers.
 
+## When is the bed size not the size of the bed?
+
+There's a dirty secret that need to be understood before configuring your
+printer:
+
+> "Bed Size" might not be the physical size of the printer bed.
+
+In Marlin's configuration, "bed size" is the _usable print area_ of your printer. It will never be bigger than your physical bed, but if the nozzle is unable to reach all parts of the bed, or there are physical obstructions such as clips, the print area will be smaller than the actual size of the print bed. So, when we set the `X_BED_SIZE` and `Y_BED_SIZE` parameters, we're actually setting the size of the usable print area.
+
 ## The world of UBL - Machine limits and bed position
 
 The most important part of the configuration is ensuring that Marlin has
 a proper understanding of where the nozzle can safely move and where the
-bed is in relation to those limits.
+usable print area is in relation to those limits.
 
 As an example, let's take a look at my printer. It has a physical bed size
-of 220mmx220mm, but the nozzle can safely move to positions outside the
-bed on all four sides. When X is homed, the nozzle is 20mm to the left of
-the left edge of the bed, when Y is homed the nozzle is 21mm in front of
+of 220mmx220mm and the nozzle can not only reach all of the bed with no
+obstructions (so in this case the "bed size" is actually the physical
+size of the bed) but the nozzle can also safely move to positions outside
+the bed on all four sides. When X is homed, the nozzle is 20mm to the left
+of the left edge of the bed, when Y is homed the nozzle is 21mm in front of
 the front edge of the bed. The nozzle can safely move 15mm past the
 right edge of the bed, and 5mm past the back of the bed.
 
