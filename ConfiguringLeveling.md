@@ -94,17 +94,18 @@ Repetier Host or OctoPrint.
 1. Build Marlin with `X_MIN_POS` and `Y_MIN_POS` both set to 0, and
 `X_BED_SIZE`/`Y_BED_SIZE` set correctly. Flash this new Marlin to your
 printer and reboot.
-2. Connect your terminal and home just X and Y with `G28 X Y`. _Do not use `G28` on its own - we do not want to home Z._
-3. The LCD display should show `X=0`,`Y=0` and the nozzle should be as far left and to the front of the bed as it can move, and touching the end stop.
-4. Check out where the nozzle is with respect to the front left corner of
+2. Connect your terminal and home just X and Y by sending `G28 X Y`. _Do **not** use `G28` on its own - we do **not** want to home Z._
+3. Make sure the nozzle is at the end stops by sending `G0 X0 Y0`.
+4. The LCD display should show `X=0`,`Y=0` and the nozzle should be as far left and to the front of the bed as it can move, and touching the end stop.
+5. Check out where the nozzle is with respect to the front left corner of
 the bed. 
-5. If the nozzle is exactly over the front left corner of the bed,
+6. If the nozzle is exactly over the front left corner of the bed,
 congratulations! Your `X_MIN_POS` and `Y_MIN_POS` values are correct, and
-you may move to determining the maximum positions.
-6. If the nozzle is to the right of the left edge of the bed, or behind
+you may jump to section "**Determining `X_MAX_POS` and `Y_MAX_POS`**".
+7. If the nozzle is to the right of the left edge of the bed, or behind
 the front edge of the bed, or both, jump to the section "**The Xmin/Ymin
 position is over the bed**".
-7. Using the LCD, move the nozzle carefully until it's right over the
+8. Using the LCD, move the nozzle carefully until it's exactly over the
 front left corner of the bed. Read the X and Y values on the LCD. Take those
 values, make them negative, and use them as new values for `X_MIN_POS` and
 `Y_MIN_POS`. For example, if when the nozzle is over the front left corner of
@@ -113,11 +114,11 @@ the bed you read `X=20` and `Y=21` on the LCD, then use
 define X_MIN_POS -20
 define Y_MIN_POS -21
 ```
-8. Build a new version of Marlin with the new `X_MIN_POS` and `Y_MIN_POS`
+9. Build a new version of Marlin with the new `X_MIN_POS` and `Y_MIN_POS`
 settings and upload to your printer.
-9. Reboot, do `G28 X Y` followed by `G0 X0 Y0`. The nozzle should end up
+10. Reboot, send `G28 X Y` followed by `G0 X0 Y0`. The nozzle should end up
 right over the front left corner of the bed.
-10. Go to section "**Determining `X_MAX_POS` and `Y_MAX_POS`**".
+11. Go to section "**Determining `X_MAX_POS` and `Y_MAX_POS`**".
 
 ### The Xmin/Ymin position is over the bed.
 
