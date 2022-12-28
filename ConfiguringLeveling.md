@@ -150,13 +150,19 @@ above, it is a simpler proposition to determine and configure the maximum positi
 
 1. Home X and Y with `G28 X Y`.
 2. Disable software end stops with `M211 S0`.
-3. With your LCD, _carefully_ move the nozzle to the right back corner of the
-bed. Watch carefully for any obstructions to motion (on some printers the
-nozzle is unable to reach the back corner of the bed).
-4. If possible, _carefully_ move the nozzle to the right and behind the bed as far as it can safely go.
-5. The position shown on the display will be your `X_MAX_POS` and `Y_MAX_POS` values.
-It is a good idea to lower these by a few millimeters for safety.
-6. If `X_BED_SIZE` is more than the resulting `X_MAX_POS` (or `Y_BED_SIZE` is
-more than `Y_MAX_POS`), set `X_BED_SIZE` to the same value as `X_MAX_POS` (or
-`Y_BED_SIZE` to `Y_MAX_POS`).
+3. With the LCD, move the nozzle somewhere near the center of the bed - the exact position is not critical.
+4. With your LCD, _carefully_ move the nozzle to the right. Watch carefully for any obstructions
+to motion (on some printers the nozzle is unable to reach the right edge of the bed).
+4. If you can reach the right edge of the bed, when the nozzle is exactly over it make a note of the `X` value on the LCD.
+Set `X_BED_SIZE` to this value. Skip to step 6.
+5. If the nozzle can't safely reach the right edge of the bed, set both `X_MAX_POS` and `X_BED_SIZE` to the `X` value on
+the LCD. Skip to step 7.
+6. With your LCD, move the nozzle _carefully_ as far right past the edge of the bed as it can safely go. Set `X_MAX_POS` to the `X` value on the LCD.
+7. With the LCD, move the nozzle back to the center of the bed as in step 3.
+8. With your LCD, _carefully_ move the nozzle to the back. Watch carefully for any obstructions to motion (on some printers the nozzle is unable to reach the back edge of the bed).
+9. If you can reach the back edge of the bed, when the nozzle is exactly over it make a note of the `Y` value on the LCD.
+Set `Y_BED_SIZE` to this value. Skip to step 12.
+10. If the nozzle can't reach the back edge of the bed, set both `Y_MAX_POS` and `Y_BED_SIZE` to the `Y` value on
+the LCD. Skip the rest of this section.
+11. With your LCD, move the nozzle _carefully_ as far back past the edge as it can safely go. Set `Y_MAX_POS` to the `Y` value on the LCD.
 
